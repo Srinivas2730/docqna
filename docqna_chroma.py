@@ -31,13 +31,13 @@ def format_answer(raw_text):
     return formatted
 
 st.set_page_config(page_title="Doc Q&A with Groq + ChromaDB")
-st.title("📄 Ask Questions from PDF or TXT using Groq + ChromaDB")
+st.title("Ask Questions from PDF or TXT using Groq + ChromaDB")
 
 uploaded_file = st.file_uploader("Upload a PDF or TXT file", type=["pdf", "txt"])
 
 if uploaded_file:
     file_bytes = uploaded_file.read()
-    st.success(f"✅ {uploaded_file.name} uploaded successfully!")
+    st.success(f"{uploaded_file.name} uploaded successfully!")
 
     # Save uploaded file temporarily
     temp_filename = "temp_file." + uploaded_file.name.split(".")[-1]
@@ -71,7 +71,7 @@ if uploaded_file:
     # Create QA chain
     qa_chain = RetrievalQA.from_chain_type(llm=llm, retriever=vectorstore.as_retriever())
 
-    query = st.text_input("💬 Ask a question about your document")
+    query = st.text_input("Ask a question about your document")
 
     if query:
         with st.spinner("Generating answer..."):
@@ -80,12 +80,12 @@ if uploaded_file:
 
             formatted_answer = format_answer(raw_answer)
 
-            st.write("🧠 Answer:")
+            st.write("Answer:")
             st.markdown(formatted_answer)
 
             # Download uploaded file button
             st.download_button(
-                label="📥 Download Uploaded File",
+                label="Download Uploaded File",
                 data=file_bytes,
                 file_name=uploaded_file.name,
                 mime=uploaded_file.type
@@ -95,7 +95,7 @@ if uploaded_file:
             answer_bytes = formatted_answer.encode("utf-8")
             answer_buffer = io.BytesIO(answer_bytes)
             st.download_button(
-                label="📥 Download Answer as TXT",
+                label="Download Answer as TXT",
                 data=answer_buffer,
                 file_name="answer.txt",
                 mime="text/plain"
