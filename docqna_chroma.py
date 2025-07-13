@@ -24,7 +24,7 @@ def format_answer(raw_text):
     return formatted
 
 st.set_page_config(page_title="Doc Q&A with Groq + ChromaDB")
-st.title("📘 Ask Questions from PDF or TXT using Groq + ChromaDB")
+st.title("Ask Questions from PDF or TXT using Groq + ChromaDB")
 
 uploaded_file = st.file_uploader("Upload a PDF or TXT file", type=["pdf", "txt"])
 
@@ -55,7 +55,7 @@ if uploaded_file:
         llm = ChatGroq(groq_api_key=groq_api_key, model_name="llama3-70b-8192")
         qa_chain = RetrievalQA.from_chain_type(llm=llm, retriever=vectorstore.as_retriever())
 
-        query = st.text_input("🔍 Ask a question about your document")
+        query = st.text_input("Ask a question about your document")
 
         if query:
             with st.spinner("Generating answer..."):
@@ -77,7 +77,7 @@ if uploaded_file:
                 # Download answer
                 answer_bytes = formatted_answer.encode("utf-8")
                 st.download_button(
-                    label="Download Answer as TXT",
+                    label="⬇️ Download Answer as TXT",
                     data=io.BytesIO(answer_bytes),
                     file_name="answer.txt",
                     mime="text/plain"
