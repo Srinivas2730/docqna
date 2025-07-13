@@ -67,17 +67,27 @@ git push -u origin main
 📁 Project Folder Structure
 
 📦 doc-qna-chroma-app
+
 ┣ 📄 docqna_chroma.py → Main Streamlit app with Doc Q&A logic
+
 ┣ 📄 .env → Securely stores Groq API key
+
 ┣ 📄 requirements.txt → Python dependencies list
+
 ┣ 📄 README.md → This setup guide and documentation
 
 💡 What the App Can Do
+
 ✔ Upload PDF or TXT documents
+
 ✔ Use Groq’s LLaMA3 model for fast, contextual answers
+
 ✔ Utilize ChromaDB vectorstore for efficient retrieval
+
 ✔ Display answers in a clean, formatted way
+
 ✔ Download the original uploaded file or the answer as a TXT file
+
 ✔ Interactive and minimal UI built with Streamlit
 
 ✨ Tech Stack Used
